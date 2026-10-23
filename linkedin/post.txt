@@ -1,0 +1,34 @@
+I built an AI agent that job-hunts for me 🤖
+
+Every weekday when I open my laptop, it starts by itself and:
+
+🔍 Visits the career pages of 28 software companies in Islamabad
+🧠 Uses Google Gemini to score each job against my CV (location, level, skills, 0–10)
+📱 Sends me the good matches on WhatsApp: "Job #5 · Laravel Developer · 9/10 · Reply YES 5"
+✍️ When I reply YES, it writes a short, honest application email
+📧 Sends it from my Gmail to the company's HR, with my CV attached
+✅ Confirms on WhatsApp: "Applied!"
+
+The most important design choice: a human in the loop. The agent does the searching and writing, but nothing is sent without my YES. It is also told to never invent skills I don't have.
+
+What I learned building it:
+• Every agent has the same 5 parts: a brain (LLM), tools, memory, rules and triggers
+• Free APIs have limits, so retries and model fallbacks matter
+• Many job boards block bots, so company career pages were a better source
+• Webhooks need security: a secret check, and only my own chat can trigger an application
+
+The tech behind it:
+🐍 Python: all the agent's code
+🧠 Google Gemini API: the brain that scores jobs and writes emails
+🍲 BeautifulSoup: reads the company career pages
+📱 WhatsApp API: sends me alerts and receives my YES
+🌐 Flask + webhook: a small server on my laptop that "hears" my WhatsApp reply
+🚇 Cloudflare Tunnel: gives my laptop a public address so WhatsApp can reach it
+📧 Gmail SMTP: sends the application email with my CV
+⏰ Windows Task Scheduler: starts the agent by itself, Monday to Friday
+
+I built it while learning agent development, with Claude Code as my pair programmer.
+
+What would you add next? 👇
+
+#AIAgents #Python #GenerativeAI #Automation #Gemini #LearningInPublic #SoftwareDevelopment #Pakistan

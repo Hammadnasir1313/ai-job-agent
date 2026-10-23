@@ -1,0 +1,210 @@
+<title>AI Job Agent diagram</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --line: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --find: #38bdf8;
+    --apply: #34d399;
+    --me: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 1500px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    padding: 56px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  header h1 { font-size: 52px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+  header h1 span { color: var(--find); }
+  header p { margin-top: 12px; font-size: 22px; color: var(--muted); }
+
+  .loop {
+    border: 2px solid var(--line);
+    border-radius: 22px;
+    padding: 22px 24px 24px;
+    position: relative;
+  }
+  .loop.find { border-color: color-mix(in srgb, var(--find) 55%, transparent); }
+  .loop.apply { border-color: color-mix(in srgb, var(--apply) 55%, transparent); }
+  .loop-label {
+    font-size: 17px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .find .loop-label { color: var(--find); }
+  .apply .loop-label { color: var(--apply); }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; }
+  .step {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px 16px;
+    position: relative;
+    min-height: 168px;
+  }
+  .step:not(:last-child)::after {
+    content: "→";
+    position: absolute; right: -28px; top: 50%; transform: translateY(-50%);
+    font-size: 26px; color: var(--muted);
+  }
+  .num {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 15px; font-weight: 800; color: var(--bg);
+    margin-bottom: 10px;
+  }
+  .find .num { background: var(--find); }
+  .apply .num { background: var(--apply); }
+  .step h3 { font-size: 19px; line-height: 1.25; margin-bottom: 6px; }
+  .step p { font-size: 15px; color: var(--muted); line-height: 1.35; }
+  .tag {
+    display: inline-block; margin-top: 8px;
+    font-size: 13px; padding: 3px 9px; border-radius: 999px;
+    background: #0b1220; color: var(--muted); border: 1px solid var(--line);
+  }
+
+  .human {
+    display: flex; align-items: center; justify-content: center; gap: 22px;
+    margin: -6px 0;
+  }
+  .bubble {
+    background: var(--card); border: 2px solid var(--me);
+    border-radius: 18px; padding: 14px 22px;
+    font-size: 19px; line-height: 1.35;
+  }
+  .bubble b { color: var(--me); }
+  .bubble.agent { border-color: var(--line); color: var(--muted); }
+  .human .arrow { font-size: 28px; color: var(--me); }
+  .human-note {
+    text-align: center; font-size: 16px; color: var(--me);
+    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  .parts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .part { background: var(--card); border-radius: 14px; padding: 14px 14px 16px; }
+  .part .icon { font-size: 26px; }
+  .part h4 { font-size: 17px; margin: 4px 0 4px; }
+  .part p { font-size: 14px; color: var(--muted); line-height: 1.35; }
+  .section-title { font-size: 17px; font-weight: 700; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+
+  footer { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; max-width: 860px; }
+  .chip { font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--text); }
+  .by { font-size: 16px; color: var(--muted); text-align: right; line-height: 1.4; }
+  .by b { color: var(--text); font-size: 19px; }
+</style>
+
+<header>
+  <h1>I built an <span>AI Job Agent</span><br>that job-hunts for me</h1>
+  <p>It checks Islamabad software companies every weekday, scores each job against my CV, and applies when I say YES on WhatsApp.</p>
+</header>
+
+<section class="loop find">
+  <div class="loop-label">Loop 1 · Find jobs (automatic, Mon–Fri)</div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>⏰ Laptop login</h3>
+      <p>Windows Task Scheduler starts the agent in the background</p>
+      <span class="tag">Trigger</span>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>🔍 Read career pages</h3>
+      <p>Visits 28 Islamabad software companies' career pages</p>
+      <span class="tag">Tool: web</span>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>🧠 Score vs my CV</h3>
+      <p>Gemini checks location, level &amp; skills, then scores 0–10</p>
+      <span class="tag">Brain + rules</span>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h3>📱 WhatsApp alert</h3>
+      <p>Only new, good matches. Remembers what it already sent</p>
+      <span class="tag">Tool + memory</span>
+    </div>
+  </div>
+</section>
+
+<div>
+  <div class="human-note">Human in the loop: I decide</div>
+  <div class="human" style="margin-top:10px">
+    <div class="bubble agent">🔔 Job #5 · Laravel Developer · 9/10<br>Reply YES 5 to apply</div>
+    <div class="arrow">→</div>
+    <div class="bubble"><b>Me:</b> YES 5</div>
+  </div>
+</div>
+
+<section class="loop apply">
+  <div class="loop-label">Loop 2 · Apply (only after my YES)</div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">5</div>
+      <h3>📨 Hears my reply</h3>
+      <p>Webhook → Cloudflare tunnel → Flask server on my laptop</p>
+      <span class="tag">Trigger</span>
+    </div>
+    <div class="step">
+      <div class="num">6</div>
+      <h3>✍️ Writes the email</h3>
+      <p>Gemini drafts a short, honest email. Never invents skills</p>
+      <span class="tag">Brain + rules</span>
+    </div>
+    <div class="step">
+      <div class="num">7</div>
+      <h3>📧 Sends my CV</h3>
+      <p>From my Gmail to the company's HR address, CV attached</p>
+      <span class="tag">Tool: email</span>
+    </div>
+    <div class="step">
+      <div class="num">8</div>
+      <h3>✅ Confirms</h3>
+      <p>WhatsApp: "Applied!" and the job is saved as APPLIED</p>
+      <span class="tag">Memory + report</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">The 5 parts of every AI agent</div>
+  <div class="parts">
+    <div class="part"><div class="icon">🧠</div><h4>Brain</h4><p>Gemini decides and writes</p></div>
+    <div class="part"><div class="icon">🛠️</div><h4>Tools</h4><p>Web pages, WhatsApp, Gmail</p></div>
+    <div class="part"><div class="icon">📒</div><h4>Memory</h4><p>JSON files: no repeats</p></div>
+    <div class="part"><div class="icon">📜</div><h4>Rules</h4><p>Islamabad/remote, junior, honest</p></div>
+    <div class="part"><div class="icon">⏰</div><h4>Triggers</h4><p>Login, 9 AM check, my YES</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">What I learned building it</div>
+  <div class="parts" style="grid-template-columns: repeat(4, 1fr)">
+    <div class="part"><p><b style="color:var(--text)">Retries &amp; fallbacks:</b> switch AI models when the free limit runs out</p></div>
+    <div class="part"><p><b style="color:var(--text)">Pick the right source:</b> job boards block bots, career pages don't</p></div>
+    <div class="part"><p><b style="color:var(--text)">Secure webhooks:</b> secret check + only my own chat can trigger it</p></div>
+    <div class="part"><p><b style="color:var(--text)">Human approval:</b> no email goes out without my YES</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="stack">
+    <span class="chip">Python</span>
+    <span class="chip">Google Gemini API</span>
+    <span class="chip">WhatsApp API</span>
+    <span class="chip">Gmail SMTP</span>
+    <span class="chip">Flask webhook</span>
+    <span class="chip">Cloudflare Tunnel</span>
+    <span class="chip">BeautifulSoup</span>
+    <span class="chip">Windows Task Scheduler</span>
+  </div>
+  <div class="by"><b>Hammad Nasir</b><br>PHP / Full-Stack Developer</div>
+</footer>

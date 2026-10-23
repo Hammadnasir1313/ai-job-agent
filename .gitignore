@@ -1,0 +1,15 @@
+# Secrets: never upload
+.env
+
+# My personal profile (an example is in my_profile.example.md)
+my_profile.md
+
+# The agent's memory and diary (my real job applications)
+seen_jobs.json
+pending_jobs.json
+last_check.txt
+agent.log
+
+# Python
+__pycache__/
+*.pyc

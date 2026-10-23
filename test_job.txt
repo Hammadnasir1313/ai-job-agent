@@ -1,0 +1,19 @@
+Laravel Developer - Example Tech (Sample job for testing)
+Location: Islamabad (On-site)
+Experience: 1-2 years
+
+Responsibilities:
+- Build and maintain web applications using Laravel
+- Create and integrate REST APIs
+- Work with MySQL databases
+- Fix bugs and improve performance
+- Work with the team using Git
+
+Requirements:
+- 1+ years experience with PHP and Laravel
+- Good knowledge of MySQL
+- JavaScript, HTML, CSS
+- Experience with REST APIs
+- Nice to have: Vue.js, Docker
+
+How to apply: send your CV to careers@example.com
